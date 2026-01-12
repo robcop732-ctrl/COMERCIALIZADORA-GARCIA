@@ -17,14 +17,15 @@
             --footer-bg: #111113;
         }
         
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--dark);
-            color: white;
+        /* BLOQUEO DE DESBORDE CRÍTICO */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Evita el scroll lateral */
-            width: 100%;
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         /* --- SPLASH --- */
@@ -35,7 +36,7 @@
             z-index: 10000;
             display: flex; justify-content: center; align-items: center;
         }
-        #splash-logo { width: 100px; transform: scale(1); }
+        #splash-logo { width: 100px; }
 
         /* --- HEADER --- */
         .main-header {
@@ -54,45 +55,54 @@
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         /* --- HERO --- */
         .hero-section {
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
         
-        /* Ajuste clave para el título */
         .hero-title { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.2rem, 8vw, 4.5rem); 
+            font-weight: 700;
             line-height: 1.1;
             margin-bottom: 20px;
-            width: 100%;
+            text-transform: uppercase;
+            /* AJUSTE MAESTRO: */
+            font-size: 8.5vw; /* Se ajusta exactamente al ancho de la pantalla */
             word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .mobile-break { display: none; }
 
+        /* CONFIGURACIÓN ESPECÍFICA PARA CELULARES */
         @media (max-width: 768px) {
             .mobile-break { display: block; }
             .hero-title { 
-                font-size: 2.1rem; /* Tamaño reducido para que no se salga */
-                letter-spacing: -0.5px;
+                font-size: 10vw; /* Un poco más grande pero en dos líneas */
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
             .hero-section p { 
-                font-size: 0.95rem !important; 
-                max-width: 100% !important; 
-                padding: 0 10px;
+                font-size: 1rem !important;
+                max-width: 95%;
             }
+        }
+
+        /* En pantallas muy pequeñas (iPhone SE, etc) */
+        @media (max-width: 380px) {
+            .hero-title { font-size: 9vw; }
         }
 
         /* --- TARJETAS --- */
@@ -101,9 +111,8 @@
             border: 1px solid #333;
             padding: 30px 20px;
             border-radius: 20px;
-            height: 100%;
+            margin-bottom: 20px;
         }
-        .service-card i { font-size: 2.5rem; color: var(--accent); }
 
         /* --- WHATSAPP --- */
         .btn-whatsapp {
@@ -146,11 +155,10 @@
 
         <main>
             <section class="hero-section">
-                <div class="container">
-                    <h1 class="hero-title stagger-item">
+                <div class="container-fluid"> <h1 class="hero-title stagger-item">
                         COMERCIALIZADORA <br class="mobile-break"> GARCIA
                     </h1>
-                    <p class="mb-4 stagger-item opacity-75 mx-auto" style="max-width: 600px;">
+                    <p class="mb-4 stagger-item opacity-75 mx-auto" style="max-width: 90%;">
                         27 años transformando la gestión documental de las notarías más importantes de México.
                     </p>
                     <div class="stagger-item">
@@ -164,9 +172,9 @@
                     <div class="row g-4">
                         <div class="col-12 col-md-4">
                             <div class="service-card stagger-item text-center">
-                                <i class="bi bi-vector-pen"></i>
+                                <i class="bi bi-vector-pen" style="font-size: 2rem; color: var(--accent);"></i>
                                 <h3 class="mt-3">Encuadernación</h3>
-                                <p class="text-muted small">Protocolos cosidos a mano con acabados de alta calidad.</p>
+                                <p class="text-muted small">Protocolos cosidos a mano con lomos reforzados.</p>
                             </div>
                         </div>
                         </div>
