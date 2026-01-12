@@ -69,14 +69,17 @@
             background-position: center;
             padding: 80px 20px;
         }
-        /* Ajuste de tipografía para mejor centrado en móvil */
+        
+        /* AJUSTE DE TAMAÑO Y CENTRADO */
         .hero-title { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(2rem, 7vw, 4.5rem); 
+            /* Reducido: Antes 2rem/4.5rem -> Ahora 1.6rem/3.8rem */
+            font-size: clamp(1.6rem, 6vw, 3.8rem); 
             line-height: 1.2;
-            width: 90%;
+            width: 100%; /* Ancho total para centrar sobre el eje */
             margin-left: auto;
             margin-right: auto;
+            text-align: center;
         }
 
         /* --- TARJETAS --- */
@@ -145,8 +148,9 @@
         .stagger-item { opacity: 0; transform: translateY(30px); }
 
         @media (max-width: 768px) {
-            .hero-section { padding: 60px 15px; min-height: 60vh; }
-            .hero-title { font-size: 2.2rem; }
+            .hero-section { padding: 60px 10px; min-height: 55vh; }
+            /* Tamaño específico para móvil muy pequeño */
+            .hero-title { font-size: 1.75rem; width: 100%; }
         }
     </style>
 </head>
@@ -178,7 +182,7 @@
                     <h1 class="hero-title mb-2 stagger-item">COMERCIALIZADORA GARCIA</h1>
                     <h1 class="hero-title mb-4 stagger-item">Excelencia en <span style="color:var(--gold)">Calidad</span></h1>
                     
-                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 700px;">
+                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 600px;">
                         27 años transformando la gestión documental de las notarías más importantes de México.
                     </p>
                     <div class="stagger-item">
@@ -304,4 +308,3 @@
     </script>
 </body>
 </html>
-
