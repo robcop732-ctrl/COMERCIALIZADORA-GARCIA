@@ -23,6 +23,7 @@
             color: white;
             margin: 0;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* --- SPLASH --- */
@@ -33,120 +34,105 @@
             z-index: 10000;
             display: flex; justify-content: center; align-items: center;
         }
-        #splash-logo { width: 140px; z-index: 10001; transform: scale(30); }
+        #splash-logo { width: 120px; z-index: 10001; transform: scale(1); }
 
         /* --- HEADER --- */
         .main-header {
             background: rgba(26, 26, 29, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 0 15px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 999;
-            text-align: center;
         }
-        .nav-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-container { margin-top: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .nav-link-custom {
             color: white;
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             opacity: 0.7;
             transition: 0.3s;
         }
-        .nav-link-custom:hover { color: var(--gold); opacity: 1; }
 
         /* --- HERO --- */
         .hero-section {
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
-            padding: 80px 20px;
+            padding: 40px 20px;
+            text-align: center;
         }
-        /* Ajuste de tipografía para mejor centrado en móvil */
+        
+        /* Ajuste crítico para el título en móvil */
         .hero-title { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(2rem, 7vw, 4.5rem); 
-            line-height: 1.2;
+            /* Clamp: Min 1.8rem, dinámico 8vw, Max 4.5rem */
+            font-size: clamp(1.8rem, 8vw, 4.5rem); 
+            line-height: 1.1;
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* --- TARJETAS --- */
         .service-card, .value-card {
             background: #252529;
             border: 1px solid #333;
-            padding: 45px 25px;
+            padding: 35px 20px;
             border-radius: 20px;
             text-align: center;
             height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: 0.5s;
+            transition: 0.4s;
         }
-        .service-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
-        .value-card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; }
-        .definition { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-weight: 700; }
+        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .definition { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 700; }
 
         /* --- FOOTER --- */
         footer {
             background-color: var(--footer-bg);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 80px 0 30px 0;
-            margin-top: 80px;
+            padding: 60px 0 20px 0;
         }
-        .footer-logo { height: 60px; margin-bottom: 25px; display: block; }
-        .footer-heading {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-        .footer-link {
-            display: block;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            margin-bottom: 12px;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-        .footer-link:hover { color: white; padding-left: 5px; }
-        .social-icon { font-size: 1.5rem; color: white; margin-right: 20px; opacity: 0.6; transition: 0.3s; }
-        .social-icon:hover { opacity: 1; color: var(--accent); }
-        .copyright { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 30px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+        .footer-logo { height: 50px; margin-bottom: 20px; }
 
-        /* --- BOTÓN WHATSAPP --- */
+        /* --- WHATSAPP --- */
         .btn-whatsapp {
             position: fixed;
-            bottom: 25px; right: 25px;
+            bottom: 20px; right: 20px;
             background-color: #25d366;
             color: white;
-            width: 60px; height: 60px;
+            width: 55px; height: 55px;
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-size: 28px;
             z-index: 1000;
-            text-decoration: none;
-            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
 
-        .stagger-item { opacity: 0; transform: translateY(30px); }
+        .stagger-item { opacity: 0; transform: translateY(20px); }
 
+        /* --- MEDIA QUERIES PARA MÓVIL --- */
         @media (max-width: 768px) {
-            .hero-section { padding: 60px 15px; min-height: 60vh; }
-            .hero-title { font-size: 2.2rem; }
+            .hero-section { min-height: 50vh; padding: 40px 10px; }
+            .hero-title { 
+                letter-spacing: -0.5px;
+                padding: 0 10px;
+            }
+            .hero-section p { font-size: 0.95rem !important; padding: 0 10px; }
+            .nav-container { gap: 10px; }
+            .service-card { padding: 25px 15px; }
         }
     </style>
 </head>
@@ -163,7 +149,7 @@
     <div class="main-wrapper">
         <header class="main-header">
             <div class="container text-center">
-                <img src="logo-removebg-preview.png" alt="Logo" style="height: 70px;">
+                <img src="logo-removebg-preview.png" alt="Logo" style="height: 55px;">
                 <nav class="nav-container">
                     <a href="index.html" class="nav-link-custom">Inicio</a>
                     <a href="catalogo.html" class="nav-link-custom">Catálogo</a>
@@ -173,22 +159,21 @@
         </header>
 
         <main>
-            <section class="hero-section text-center">
+            <section class="hero-section">
                 <div class="container">
-                    <h1 class="hero-title mb-2 stagger-item">COMERCIALIZADORA GARCIA</h1>
-                   
+                    <h1 class="hero-title stagger-item">COMERCIALIZADORA GARCIA</h1>
                     
-                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 700px;">
+                    <p class="fs-6 mb-4 stagger-item opacity-75 mx-auto" style="max-width: 600px;">
                         27 años transformando la gestión documental de las notarías más importantes de México.
                     </p>
                     <div class="stagger-item">
-                        <a href="catalogo.html" class="btn btn-danger px-5 py-3 rounded-pill fw-bold">CONOCENOS!!</a>
+                        <a href="catalogo.html" class="btn btn-danger px-4 py-2 rounded-pill fw-bold">CONÓCENOS</a>
                     </div>
                 </div>
             </section>
 
             <section class="py-5">
-                <div class="container px-4">
+                <div class="container px-3">
                     <div class="row g-4">
                         <div class="col-12 col-md-4">
                             <div class="service-card stagger-item">
@@ -217,77 +202,29 @@
                     </div>
                 </div>
             </section>
-
-            <section class="py-5 bg-black bg-opacity-25">
-                <div class="container px-4">
-                    <div class="row g-4 text-center">
-                        <div class="col-12 col-md-4">
-                            <div class="value-card stagger-item">
-                                <i class="bi bi-shield-lock"></i>
-                                <h4>Seguridad Documental</h4>
-                                <p class="text-muted small">Garantizamos la máxima protección para sus documentos legales.</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="value-card stagger-item">
-                                <i class="bi bi-diagram-3"></i>
-                                <h4>Orden y Eficiencia</h4>
-                                <p class="text-muted small">Papelería diseñada para optimizar los tiempos de gestión notarial.</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="value-card stagger-item">
-                                <i class="bi bi-award"></i>
-                                <h4>Imagen Corporativa</h4>
-                                <p class="text-muted small">Elevamos el prestigio de su Notaría con acabados de alta gama.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
 
-        <footer>
+        <footer class="text-center text-lg-start">
             <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-4 text-center text-lg-start">
-                        <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo mx-auto mx-lg-0">
+                <div class="row g-4">
+                    <div class="col-12 col-lg-4">
+                        <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo">
                         <p class="small opacity-50 mx-auto mx-lg-0" style="max-width: 300px;">
                             Líderes en soluciones documentales para el sector notarial desde 1997.
                         </p>
-                        <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                        </div>
                     </div>
-                    
-                    <div class="col-md-4 col-lg-2 text-center text-lg-start">
-                        <h5 class="footer-heading">Navegación</h5>
-                        <a href="index.html" class="footer-link">Inicio</a>
-                        <a href="catalogo.html" class="footer-link">Catálogo</a>
-                        <a href="https://wa.me/525531877584" class="footer-link">Contacto</a>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
-                        <h5 class="footer-heading">Servicios</h5>
-                        <a href="#" class="footer-link">Encuadernación Artesanal</a>
-                        <a href="#" class="footer-link">Digitalización OCR</a>
-                        <a href="#" class="footer-link">Impresión de Seguridad</a>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
+                    <div class="col-6 col-lg-4">
                         <h5 class="footer-heading">Contacto</h5>
-                        <p class="footer-link mb-2">Antonio Solís 14, Col. Obrera, CDMX.</p>
-                        <p class="footer-link mb-2">55 3187 7584</p>
-                        <p class="footer-link">jraul_gar@hotmail.com</p>
+                        <p class="small mb-1">55 3187 7584</p>
+                        <p class="small">jraul_gar@hotmail.com</p>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <h5 class="footer-heading">Ubicación</h5>
+                        <p class="small">Col. Obrera, CDMX.</p>
                     </div>
                 </div>
-
-                <div class="row copyright text-center">
-                    <div class="col-12">
-                        <p>© 2026 SOLUCIONES NOTARIALES. Todos los derechos reservados.</p>
-                    </div>
+                <div class="copyright text-center pt-4 mt-4 border-top border-secondary">
+                    <p class="mb-0">© 2026 SOLUCIONES NOTARIALES.</p>
                 </div>
             </div>
         </footer>
@@ -297,12 +234,11 @@
     <script>
         window.addEventListener('load', () => {
             const tl = gsap.timeline();
-            tl.to("#splash-logo", { scale: 0.8, duration: 1.2, ease: "expo.inOut" })
-              .to("#splash-container", { y: "-100%", duration: 0.8, ease: "expo.inOut" })
-              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 });
+            // Ajuste de la animación inicial para que no sea tan brusca
+            tl.to("#splash-logo", { scale: 0.8, duration: 1, ease: "power2.inOut" })
+              .to("#splash-container", { y: "-100%", duration: 0.6, ease: "expo.inOut" })
+              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 });
         });
     </script>
 </body>
 </html>
-
-
