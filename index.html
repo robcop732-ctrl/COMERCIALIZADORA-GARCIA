@@ -25,106 +25,68 @@
             overflow-x: hidden;
         }
 
-        /* --- SPLASH --- */
-        #splash-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: white;
-            z-index: 10000;
-            display: flex; justify-content: center; align-items: center;
-        }
-        #splash-logo { width: 140px; z-index: 10001; transform: scale(30); }
-
         /* --- HEADER --- */
         .main-header {
             background: rgba(26, 26, 29, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 0 15px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 999;
-            text-align: center;
         }
-        .nav-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .nav-link-custom {
-            color: white;
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            transition: 0.3s;
-        }
-        .nav-link-custom:hover { color: var(--gold); opacity: 1; }
 
-        /* --- HERO --- */
+        /* --- HERO AREA --- */
         .hero-section {
-            min-height: 80vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
-            padding: 60px 20px;
+            text-align: center;
+            padding: 40px 20px;
         }
-        
-        /* Títulos independientes para mejor control */
-        .brand-name {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 0.5rem;
+
+        /* TITULO FUERA DEL CONTENEDOR PRINCIPAL */
+        .independent-brand {
             display: block;
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 30px; /* Espacio respecto al mensaje principal */
+            opacity: 0.9;
         }
 
-        .main-title {
+        .hero-content-box {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        .main-display-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 8vw, 4.5rem);
+            font-size: clamp(2.4rem, 9vw, 5rem);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 25px;
         }
 
-        /* --- TARJETAS --- */
-        .service-card, .value-card {
+        /* --- SERVICIOS --- */
+        .service-card {
             background: #252529;
             border: 1px solid #333;
-            padding: 45px 25px;
+            padding: 40px 20px;
             border-radius: 20px;
             text-align: center;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: 0.5s;
-        }
-        .service-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
-        .value-card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; }
-        .definition { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-weight: 700; }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--footer-bg);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 80px 0 30px 0;
-            margin-top: 80px;
-        }
-        .footer-logo { height: 60px; margin-bottom: 25px; display: block; }
-        .footer-link {
-            display: block;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            margin-bottom: 12px;
             transition: 0.3s;
-            font-size: 0.9rem;
         }
-        .footer-link:hover { color: white; padding-left: 5px; }
-        .social-icon { font-size: 1.5rem; color: white; margin-right: 20px; opacity: 0.6; transition: 0.3s; }
-        .social-icon:hover { opacity: 1; color: var(--accent); }
+        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
 
         /* --- BOTÓN WHATSAPP --- */
         .btn-whatsapp {
@@ -136,109 +98,102 @@
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
             font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             z-index: 1000;
             text-decoration: none;
-            transition: 0.3s;
         }
 
-        .stagger-item { opacity: 0; transform: translateY(30px); }
+        .stagger-item { opacity: 0; transform: translateY(20px); }
 
         @media (max-width: 768px) {
-            .hero-section { padding: 40px 15px; }
-            .brand-name { letter-spacing: 2px; }
+            .independent-brand { 
+                font-size: 0.7rem; 
+                letter-spacing: 3px;
+                margin-bottom: 20px;
+            }
+            .main-display-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="splash-container">
-        <img id="splash-logo" src="logo-removebg-preview.png" alt="Logo">
-    </div>
-
     <a href="https://wa.me/525531877584" class="btn-whatsapp" target="_blank">
         <i class="bi bi-whatsapp"></i>
     </a>
 
-    <div class="main-wrapper">
-        <header class="main-header">
-            <div class="container text-center">
-                <img src="logo-removebg-preview.png" alt="Logo" style="height: 70px;">
-                <nav class="nav-container">
-                    <a href="index.html" class="nav-link-custom">Inicio</a>
-                    <a href="catalogo.html" class="nav-link-custom">Catálogo</a>
-                    <a href="https://wa.me/525531877584" class="nav-link-custom">Contacto</a>
-                </nav>
+    <header class="main-header">
+        <div class="container text-center">
+            <img src="logo-removebg-preview.png" alt="Logo" style="height: 60px;">
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            
+            <div class="independent-brand stagger-item">
+                Comercializadora Garcia
             </div>
-        </header>
 
-        <main>
-            <section class="hero-section text-center">
-                <div class="container">
-                    <span class="brand-name stagger-item">Comercializadora Garcia</span>
-                    
-                    <h1 class="main-title stagger-item">
-                        Excelencia en <br>
-                        <span style="color:var(--gold)">Calidad Notarial</span>
-                    </h1>
-                    
-                    <p class="fs-6 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 500px;">
-                        27 años transformando la gestión documental de las notarías más importantes de México.
-                    </p>
-                    
-                    <div class="stagger-item">
-                        <a href="https://wa.me/525531877584" class="btn btn-danger px-5 py-3 rounded-pill fw-bold shadow-lg">CONTACTAR AHORA</a>
-                    </div>
+            <div class="hero-content-box">
+                <h1 class="main-display-title stagger-item">
+                    Excelencia en <br>
+                    <span style="color:var(--gold)">Calidad Notarial</span>
+                </h1>
+                
+                <p class="fs-6 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 550px;">
+                    Más de 27 años de experiencia ofreciendo soluciones documentales de alta gama para las notarías de México.
+                </p>
+                
+                <div class="stagger-item">
+                    <a href="https://wa.me/525531877584" class="btn btn-danger px-5 py-3 rounded-pill fw-bold shadow-lg">
+                        CONTACTAR AHORA
+                    </a>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="py-5">
-                <div class="container px-4">
-                    <div class="row g-4">
-                        <div class="col-12 col-md-4">
-                            <div class="service-card stagger-item">
-                                <i class="bi bi-vector-pen"></i>
-                                <h3>Encuadernación</h3>
-                                <div class="definition">Preservación Física</div>
-                                <p class="text-muted small">Protocolos cosidos a mano con lomos reforzados y grabado en pan de oro.</p>
-                            </div>
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4 px-3">
+                    <div class="col-12 col-md-4">
+                        <div class="service-card stagger-item">
+                            <i class="bi bi-journal-check"></i>
+                            <h4 class="h5">Encuadernación</h4>
+                            <p class="small text-muted mb-0">Protocolos y apéndices con acabados artesanales de lujo.</p>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <div class="service-card stagger-item">
-                                <i class="bi bi-cloud-check"></i>
-                                <h3>Diseño</h3>
-                                <div class="definition">Inteligencia Documental</div>
-                                <p class="text-muted small">Conversión de archivos físicos a bases de datos con tecnología OCR.</p>
-                            </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="service-card stagger-item">
+                            <i class="bi bi-cpu"></i>
+                            <h4 class="h5">Digitalización</h4>
+                            <p class="small text-muted mb-0">Tecnología OCR para búsquedas inteligentes en su archivo.</p>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <div class="service-card stagger-item">
-                                <i class="bi bi-layers"></i>
-                                <h3>Impresión</h3>
-                                <div class="definition">Soporte de Seguridad</div>
-                                <p class="text-muted small">Papel seguridad y opalina de 120g para testimonios oficiales.</p>
-                            </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="service-card stagger-item">
+                            <i class="bi bi-shield-check"></i>
+                            <h4 class="h5">Seguridad</h4>
+                            <p class="small text-muted mb-0">Papelería con medidas de seguridad de última generación.</p>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
-
-        <footer class="py-5 bg-black">
-            <div class="container text-center">
-                <img src="logo-removebg-preview.png" alt="Logo" class="mx-auto mb-4" style="height: 50px; opacity: 0.8;">
-                <p class="small text-muted mb-0">© 2026 COMERCIALIZADORA GARCIA. Todos los derechos reservados.</p>
             </div>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="py-4 bg-black text-center">
+        <p class="small text-muted mb-0">© 2026 COMERCIALIZADORA GARCIA</p>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
         window.addEventListener('load', () => {
-            const tl = gsap.timeline();
-            tl.to("#splash-logo", { scale: 0.8, duration: 1.2, ease: "expo.inOut" })
-              .to("#splash-container", { y: "-100%", duration: 0.8, ease: "expo.inOut" })
-              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 });
+            gsap.to(".stagger-item", { 
+                opacity: 1, 
+                y: 0, 
+                stagger: 0.15, 
+                duration: 0.8, 
+                ease: "power2.out" 
+            });
         });
     </script>
 </body>
