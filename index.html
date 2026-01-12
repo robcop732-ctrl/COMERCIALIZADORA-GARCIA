@@ -25,68 +25,53 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER --- */
-        .main-header {
-            background: rgba(26, 26, 29, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-
         /* --- HERO AREA --- */
         .hero-section {
             position: relative;
-            min-height: 85vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* TITULO FUERA DEL CONTENEDOR PRINCIPAL */
-        .independent-brand {
-            display: block;
-            width: 100%;
+        /* DISEÑO DE NOMBRE DE EMPRESA LLAMATIVO */
+        .company-brand-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid rgba(212, 175, 55, 0.4); /* Borde dorado tenue */
+            background: rgba(255, 255, 255, 0.05); /* Fondo cristalino */
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            margin-bottom: 40px; /* Separación clara */
+        }
+
+        .company-name {
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 5px;
+            font-size: clamp(0.75rem, 3vw, 1rem);
+            letter-spacing: 6px;
             color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 30px; /* Espacio respecto al mensaje principal */
-            opacity: 0.9;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .hero-content-box {
-            max-width: 850px;
-            width: 100%;
+            max-width: 900px;
         }
 
         .main-display-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 9vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
-
-        /* --- SERVICIOS --- */
-        .service-card {
-            background: #252529;
-            border: 1px solid #333;
-            padding: 40px 20px;
-            border-radius: 20px;
-            text-align: center;
-            height: 100%;
-            transition: 0.3s;
-        }
-        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
 
         /* --- BOTÓN WHATSAPP --- */
         .btn-whatsapp {
@@ -99,18 +84,16 @@
             display: flex; justify-content: center; align-items: center;
             font-size: 30px;
             z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             text-decoration: none;
         }
 
-        .stagger-item { opacity: 0; transform: translateY(20px); }
+        .stagger-item { opacity: 0; transform: translateY(25px); }
 
         @media (max-width: 768px) {
-            .independent-brand { 
-                font-size: 0.7rem; 
-                letter-spacing: 3px;
-                margin-bottom: 20px;
-            }
-            .main-display-title { font-size: 2.2rem; }
+            .company-brand-badge { padding: 8px 18px; margin-bottom: 30px; }
+            .company-name { letter-spacing: 4px; }
+            .main-display-title { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -120,17 +103,11 @@
         <i class="bi bi-whatsapp"></i>
     </a>
 
-    <header class="main-header">
-        <div class="container text-center">
-            <img src="logo-removebg-preview.png" alt="Logo" style="height: 60px;">
-        </div>
-    </header>
-
     <main>
         <section class="hero-section">
             
-            <div class="independent-brand stagger-item">
-                Comercializadora Garcia
+            <div class="company-brand-badge stagger-item">
+                <h2 class="company-name">Comercializadora Garcia</h2>
             </div>
 
             <div class="hero-content-box">
@@ -139,50 +116,19 @@
                     <span style="color:var(--gold)">Calidad Notarial</span>
                 </h1>
                 
-                <p class="fs-6 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 550px;">
-                    Más de 27 años de experiencia ofreciendo soluciones documentales de alta gama para las notarías de México.
+                <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 600px; font-weight: 300;">
+                    Elevamos el estándar documental de las Notarías con procesos artesanales y tecnología de vanguardia.
                 </p>
                 
                 <div class="stagger-item">
-                    <a href="https://wa.me/525531877584" class="btn btn-danger px-5 py-3 rounded-pill fw-bold shadow-lg">
-                        CONTACTAR AHORA
+                    <a href="https://wa.me/525531877584" class="btn btn-danger btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg">
+                        INICIAR PROYECTO
                     </a>
                 </div>
             </div>
-        </section>
 
-        <section class="py-5">
-            <div class="container">
-                <div class="row g-4 px-3">
-                    <div class="col-12 col-md-4">
-                        <div class="service-card stagger-item">
-                            <i class="bi bi-journal-check"></i>
-                            <h4 class="h5">Encuadernación</h4>
-                            <p class="small text-muted mb-0">Protocolos y apéndices con acabados artesanales de lujo.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="service-card stagger-item">
-                            <i class="bi bi-cpu"></i>
-                            <h4 class="h5">Digitalización</h4>
-                            <p class="small text-muted mb-0">Tecnología OCR para búsquedas inteligentes en su archivo.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="service-card stagger-item">
-                            <i class="bi bi-shield-check"></i>
-                            <h4 class="h5">Seguridad</h4>
-                            <p class="small text-muted mb-0">Papelería con medidas de seguridad de última generación.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
-
-    <footer class="py-4 bg-black text-center">
-        <p class="small text-muted mb-0">© 2026 COMERCIALIZADORA GARCIA</p>
-    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
@@ -190,9 +136,9 @@
             gsap.to(".stagger-item", { 
                 opacity: 1, 
                 y: 0, 
-                stagger: 0.15, 
-                duration: 0.8, 
-                ease: "power2.out" 
+                stagger: 0.2, 
+                duration: 1, 
+                ease: "expo.out" 
             });
         });
     </script>
