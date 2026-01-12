@@ -50,45 +50,55 @@
         .nav-link-custom {
             color: white;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             opacity: 0.7;
             transition: 0.3s;
         }
+        .nav-link-custom:hover { color: var(--gold); opacity: 1; }
 
         /* --- HERO --- */
         .hero-section {
-            min-height: 70vh;
+            min-height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
             padding: 40px 20px;
             text-align: center;
         }
         
-        /* Ajuste crítico para el título en móvil */
         .hero-title { 
             font-family: 'Playfair Display', serif; 
-            /* Clamp: Min 1.8rem, dinámico 8vw, Max 4.5rem */
-            font-size: clamp(1.8rem, 8vw, 4.5rem); 
+            font-size: clamp(2.2rem, 7vw, 4.5rem); 
             line-height: 1.1;
             width: 100%;
-            max-width: 900px;
             margin: 0 auto 20px auto;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            text-transform: uppercase;
+        }
+
+        /* Salto de línea solo en celulares */
+        .mobile-break { display: none; }
+
+        @media (max-width: 768px) {
+            .mobile-break { display: block; }
+            .hero-title { 
+                font-size: 2.4rem; /* Tamaño optimizado para 2 líneas */
+                letter-spacing: 1px;
+            }
+            .hero-section { min-height: 60vh; padding: 50px 15px; }
+            .hero-section p { font-size: 1rem !important; max-width: 90% !important; }
         }
 
         /* --- TARJETAS --- */
         .service-card, .value-card {
             background: #252529;
             border: 1px solid #333;
-            padding: 35px 20px;
+            padding: 40px 25px;
             border-radius: 20px;
             text-align: center;
             height: 100%;
@@ -97,43 +107,37 @@
             align-items: center;
             transition: 0.4s;
         }
-        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
-        .definition { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 700; }
+        .service-card i { font-size: 2.8rem; color: var(--accent); margin-bottom: 20px; }
+        .value-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .definition { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-weight: 700; }
 
         /* --- FOOTER --- */
         footer {
             background-color: var(--footer-bg);
-            padding: 60px 0 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 0 30px 0;
         }
-        .footer-logo { height: 50px; margin-bottom: 20px; }
+        .footer-logo { height: 55px; margin-bottom: 20px; }
+        .footer-heading { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 700; }
+        .footer-link { color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.9rem; transition: 0.3s; }
+        .footer-link:hover { color: white; padding-left: 5px; }
 
         /* --- WHATSAPP --- */
         .btn-whatsapp {
             position: fixed;
-            bottom: 20px; right: 20px;
+            bottom: 25px; right: 25px;
             background-color: #25d366;
             color: white;
-            width: 55px; height: 55px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            font-size: 28px;
+            font-size: 30px;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            text-decoration: none;
         }
 
-        .stagger-item { opacity: 0; transform: translateY(20px); }
-
-        /* --- MEDIA QUERIES PARA MÓVIL --- */
-        @media (max-width: 768px) {
-            .hero-section { min-height: 50vh; padding: 40px 10px; }
-            .hero-title { 
-                letter-spacing: -0.5px;
-                padding: 0 10px;
-            }
-            .hero-section p { font-size: 0.95rem !important; padding: 0 10px; }
-            .nav-container { gap: 10px; }
-            .service-card { padding: 25px 15px; }
-        }
+        .stagger-item { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
@@ -149,7 +153,7 @@
     <div class="main-wrapper">
         <header class="main-header">
             <div class="container text-center">
-                <img src="logo-removebg-preview.png" alt="Logo" style="height: 55px;">
+                <img src="logo-removebg-preview.png" alt="Logo" style="height: 60px;">
                 <nav class="nav-container">
                     <a href="index.html" class="nav-link-custom">Inicio</a>
                     <a href="catalogo.html" class="nav-link-custom">Catálogo</a>
@@ -159,21 +163,24 @@
         </header>
 
         <main>
-            <section class="hero-section">
+            <section class="hero-section text-center">
                 <div class="container">
-                    <h1 class="hero-title stagger-item">COMERCIALIZADORA GARCIA</h1>
+                    <h1 class="hero-title stagger-item">
+                        COMERCIALIZADORA <br class="mobile-break"> GARCIA
+                    </h1>
                     
-                    <p class="fs-6 mb-4 stagger-item opacity-75 mx-auto" style="max-width: 600px;">
+                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 700px;">
                         27 años transformando la gestión documental de las notarías más importantes de México.
                     </p>
+                    
                     <div class="stagger-item">
-                        <a href="catalogo.html" class="btn btn-danger px-4 py-2 rounded-pill fw-bold">CONÓCENOS</a>
+                        <a href="catalogo.html" class="btn btn-danger px-5 py-3 rounded-pill fw-bold">CONÓCENOS</a>
                     </div>
                 </div>
             </section>
 
             <section class="py-5">
-                <div class="container px-3">
+                <div class="container px-4">
                     <div class="row g-4">
                         <div class="col-12 col-md-4">
                             <div class="service-card stagger-item">
@@ -204,27 +211,30 @@
             </section>
         </main>
 
-        <footer class="text-center text-lg-start">
+        <footer>
             <div class="container">
-                <div class="row g-4">
-                    <div class="col-12 col-lg-4">
+                <div class="row g-5">
+                    <div class="col-lg-4 text-center text-lg-start">
                         <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo">
                         <p class="small opacity-50 mx-auto mx-lg-0" style="max-width: 300px;">
                             Líderes en soluciones documentales para el sector notarial desde 1997.
                         </p>
                     </div>
-                    <div class="col-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 text-center text-lg-start">
                         <h5 class="footer-heading">Contacto</h5>
-                        <p class="small mb-1">55 3187 7584</p>
-                        <p class="small">jraul_gar@hotmail.com</p>
+                        <p class="footer-link mb-1">Antonio Solís 14, Col. Obrera, CDMX.</p>
+                        <p class="footer-link mb-1">55 3187 7584</p>
+                        <p class="footer-link">jraul_gar@hotmail.com</p>
                     </div>
-                    <div class="col-6 col-lg-4">
-                        <h5 class="footer-heading">Ubicación</h5>
-                        <p class="small">Col. Obrera, CDMX.</p>
+                    <div class="col-md-6 col-lg-4 text-center text-lg-start">
+                        <h5 class="footer-heading">Servicios</h5>
+                        <a href="#" class="footer-link">Encuadernación Artesanal</a>
+                        <a href="#" class="footer-link">Digitalización OCR</a>
+                        <a href="#" class="footer-link">Impresión de Seguridad</a>
                     </div>
                 </div>
-                <div class="copyright text-center pt-4 mt-4 border-top border-secondary">
-                    <p class="mb-0">© 2026 SOLUCIONES NOTARIALES.</p>
+                <div class="copyright text-center">
+                    <p class="mb-0">© 2026 SOLUCIONES NOTARIALES. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
@@ -234,10 +244,9 @@
     <script>
         window.addEventListener('load', () => {
             const tl = gsap.timeline();
-            // Ajuste de la animación inicial para que no sea tan brusca
             tl.to("#splash-logo", { scale: 0.8, duration: 1, ease: "power2.inOut" })
-              .to("#splash-container", { y: "-100%", duration: 0.6, ease: "expo.inOut" })
-              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 });
+              .to("#splash-container", { y: "-100%", duration: 0.7, ease: "expo.inOut" })
+              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 });
         });
     </script>
 </body>
