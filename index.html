@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garcia</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+    
+    <style>
+        :root {
+            --dark: #1a1a1d;
+            --accent: #c14242;
+            --gold: #d4af37;
+            --footer-bg: #111113;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- SPLASH --- */
+        #splash-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: white;
+            z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #splash-logo { width: 140px; z-index: 10001; transform: scale(30); }
+
+        /* --- HEADER --- */
+        .main-header {
+            background: rgba(26, 26, 29, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0 15px 0;
+         
+            top: 0;
+            z-index: 999;
+            text-align: center;
+        }
+        .nav-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-link-custom {
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .nav-link-custom:hover { color: var(--gold); opacity: 1; }
+
+        /* --- HERO --- */
+        .hero-section {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+        }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; }
+
+        /* --- TARJETAS --- */
+        .service-card, .value-card {
+            background: #252529;
+            border: 1px solid #333;
+            padding: 45px 25px;
+            border-radius: 20px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .service-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .value-card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; }
+        .definition { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-weight: 700; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--footer-bg);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 0 30px 0;
+            margin-top: 80px;
+        }
+        .footer-logo { height: 60px; margin-bottom: 25px; display: block; }
+        .footer-heading {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .footer-link {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .footer-link:hover { color: white; padding-left: 5px; }
+        .social-icon { font-size: 1.5rem; color: white; margin-right: 20px; opacity: 0.6; transition: 0.3s; }
+        .social-icon:last-child { margin-right: 0; }
+        .social-icon:hover { opacity: 1; color: var(--accent); }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 30px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+        /* --- BOTÓN WHATSAPP --- */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
+
+        .stagger-item { opacity: 0; transform: translateY(30px); }
+    </style>
+</head>
+<body>
+
+    <div id="splash-container">
+        <img id="splash-logo" src="logo-removebg-preview.png" alt="Logo">
+    </div>
+
+    <a href="https://wa.me/525531877584" class="btn-whatsapp" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="container text-center">
+                <img src="logo-removebg-preview.png" alt="Logo" style="height: 70px;">
+                <nav class="nav-container">
+                    <a href="#" class="nav-link-custom">Inicio</a>
+                    <a href="catalogo.html" class="nav-link-custom">Catalogo</a>
+                    <a href="https://wa.me/525531877584" class="nav-link-custom">Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section text-center">
+                <div class="container">
+                    <h1 class="hero-title mb-4 stagger-item">COMERCIALIZADORA GARCIA <br>
+                    <h1 class="hero-title mb-4 stagger-item">Excelencia en <br><span style="color:var(--gold)">En Calidad </span></h1>
+                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 700px;">27 años transformando la gestión documental de las notarías más importantes de México.</p>
+                    <div class="stagger-item">
+                        <a href="https://wa.me/525531877584" class="btn btn-danger px-5 py-3 rounded-pill fw-bold">CONTACTAR AHORA</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-5">
+                <div class="container px-4">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-vector-pen"></i>
+                                <h3>Encuadernación</h3>
+                                <div class="definition">Preservación Física</div>
+                                <p class="text-muted small">Protocolos cosidos a mano con lomos reforzados y grabado en pan de oro.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-cloud-check"></i>
+                                <h3>Diseño</h3>
+                                <div class="definition">Inteligencia Documental</div>
+                                <p class="text-muted small">Conversión de archivos físicos a bases de datos inteligentes con OCR.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-layers"></i>
+                                <h3>Impresión</h3>
+                                <div class="definition">Soporte de Seguridad</div>
+                                <p class="text-muted small">Papel seguridad y opalina de 120g para testimonios y apéndices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-5 bg-black bg-opacity-25">
+                <div class="container px-4">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-shield-lock"></i>
+                                <h4>Seguridad Documental</h4>
+                                <p class="text-muted small">Garantizar la máxima seguridad para todos sus documentos, respaldando la integridad legal.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-diagram-3"></i>
+                                <h4>Orden y Eficiencia</h4>
+                                <p class="text-muted small">Brindar papelería diseñada específicamente para facilitar el orden y optimizar la gestión.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-award"></i>
+                                <h4>Imagen Corporativa</h4>
+                                <p class="text-muted small">Colaborar con la Notaría para elevar y mantener una Imagen Corporativa impecable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4 text-center text-lg-start">
+                        <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo mx-auto mx-lg-0">
+                        <div class="mt-4">
+                            <p class="small opacity-50 mx-auto mx-lg-0" style="max-width: 300px;">
+                                Líderes en soluciones documentales para el sector notarial desde 1997. Calidad, confidencialidad y elegancia en cada folio.
+                            </p>
+                            <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
+                                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-lg-2 text-center text-lg-start">
+                        <h5 class="footer-heading">Navegación</h5>
+                        <a href="#" class="footer-link">Inicio</a>
+                        <a href="#" class="footer-link">Servicios</a>
+                        <a href="#" class="footer-link">Proyectos</a>
+                        <a href="#" class="footer-link">Catálogo 2026</a>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
+                        <h5 class="footer-heading">Servicios</h5>
+                        <a href="#" class="footer-link">Encuadernación Artesanal</a>
+                        <a href="#" class="footer-link">Digitalización OCR</a>
+                        <a href="#" class="footer-link">Impresión de Seguridad</a>
+                        <a href="#" class="footer-link">Restauración de Libros</a>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
+                        <h5 class="footer-heading">Contacto</h5>
+                        <p class="footer-link mb-2"><i class="bi bi-geo-alt-fill me-2 text-white d-none d-lg-inline"></i> Antonio Solís 14, Col. Obrera, CDMX.</p>
+                        <p class="footer-link mb-2"><i class="bi bi-telephone-fill me-2 text-white d-none d-lg-inline"></i> 55 3187 7584</p>
+                        <p class="footer-link"><i class="bi bi-envelope-fill me-2 text-white d-none d-lg-inline"></i> jraul_gar@hotmail.com</p>
+                    </div>
+                </div>
+
+                <div class="row copyright text-center px-3">
+                    <div class="col-12">
+                        <p>© 2026 SOLUCIONES NOTARIALES. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.to("#splash-logo", { scale: 0.8, duration: 1.2, ease: "expo.inOut" })
+              .to("#splash-container", { y: "-100%", duration: 0.8, ease: "expo.inOut" })
+              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 });
+        });
+    </script>
+</body>
+</html>
