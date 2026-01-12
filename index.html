@@ -3,356 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GARCIA - Catálogo de Productos</title>
+    <title>GARCIA - Soluciones Notariales</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"> 
     
     <style>
         :root {
             --dark: #1a1a1d;
-            --dark-secondary: #252529;
             --accent: #c14242;
             --gold: #d4af37;
             --footer-bg: #111113;
-            --text-gray: #a0a0a5;
         }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--dark); 
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark);
             color: white;
             margin: 0;
             overflow-x: hidden;
         }
+
+        /* --- SPLASH --- */
+        #splash-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: white;
+            z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #splash-logo { width: 140px; z-index: 10001; transform: scale(30); }
 
         /* --- HEADER --- */
         .main-header {
             background: rgba(26, 26, 29, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 0;
+            padding: 20px 0 15px 0;
             position: sticky;
             top: 0;
             z-index: 999;
             text-align: center;
         }
-        
-        .header-logo {
-            height: 70px;
-            transition: 0.3s;
-        }
-
-        .nav-container { 
-            margin-top: 15px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            flex-wrap: wrap; 
-        }
-
+        .nav-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .nav-link-custom {
             color: white;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             opacity: 0.7;
             transition: 0.3s;
         }
-        .nav-link-custom:hover, .nav-link-custom.active { color: var(--gold); opacity: 1; }
+        .nav-link-custom:hover { color: var(--gold); opacity: 1; }
 
         /* --- HERO --- */
-        .catalog-hero {
-            padding: 100px 20px 60px 20px;
-            background: linear-gradient(rgba(26,26,29,0.85), rgba(26,26,29,0.85)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
+        .hero-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_1d5q3l1d5q3l1d5q.png');
             background-size: cover;
             background-position: center;
-            text-align: center;
+            padding: 80px 20px;
         }
-        .catalog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 15px; }
-        .gold-divider { width: 60px; height: 3px; background: var(--gold); margin: 0 auto 25px auto; }
+        /* Ajuste de tipografía para mejor centrado en móvil */
+        .hero-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2rem, 7vw, 4.5rem); 
+            line-height: 1.2;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-        /* --- TARJETAS DE PRODUCTO --- */
-        .product-card {
-            background: var(--dark-secondary);
-            border: 1px solid rgba(255,255,255,0.05);
+        /* --- TARJETAS --- */
+        .service-card, .value-card {
+            background: #252529;
+            border: 1px solid #333;
+            padding: 45px 25px;
             border-radius: 20px;
-            overflow: hidden;
+            text-align: center;
             height: 100%;
-            transition: 0.4s;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            transition: 0.5s;
         }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        
-        .img-container { height: 240px; overflow: hidden; position: relative; background: #000; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .product-card:hover .img-container img { transform: scale(1.1); }
-
-        .card-body-custom { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .badge-gold {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: inline-block;
-            align-self: flex-start;
-        }
-        .product-title { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px; }
-        .product-description { flex-grow: 1; }
-        .product-list { padding: 0; list-style: none; margin-top: auto; }
-        .product-list li { font-size: 0.85rem; color: var(--text-gray); margin-bottom: 10px; display: flex; align-items: center; }
-        .product-list li i { color: var(--gold); margin-right: 12px; }
+        .service-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .value-card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; }
+        .definition { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-weight: 700; }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--footer-bg); border-top: 1px solid rgba(255,255,255,0.05); padding: 80px 0 30px 0; margin-top: 80px; }
-        .footer-logo { height: 60px; margin-bottom: 25px; }
-        .footer-heading { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 25px; font-weight: 700; }
-        .footer-link { display: block; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-size: 0.9rem; }
+        footer {
+            background-color: var(--footer-bg);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 0 30px 0;
+            margin-top: 80px;
+        }
+        .footer-logo { height: 60px; margin-bottom: 25px; display: block; }
+        .footer-heading {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .footer-link {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
         .footer-link:hover { color: white; padding-left: 5px; }
         .social-icon { font-size: 1.5rem; color: white; margin-right: 20px; opacity: 0.6; transition: 0.3s; }
         .social-icon:hover { opacity: 1; color: var(--accent); }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 30px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-        /* --- BOTONES --- */
+        /* --- BOTÓN WHATSAPP --- */
         .btn-whatsapp {
-            position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center;
-            align-items: center; font-size: 30px; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-decoration: none; transition: 0.3s;
+            position: fixed;
+            bottom: 25px; right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: 0.3s;
         }
         .btn-whatsapp:hover { transform: scale(1.1); color: white; }
 
         .stagger-item { opacity: 0; transform: translateY(30px); }
 
         @media (max-width: 768px) {
-            .header-logo { height: 55px; }
-            .nav-container { gap: 10px; }
-            .catalog-hero { padding: 60px 20px; }
+            .hero-section { padding: 60px 15px; min-height: 60vh; }
+            .hero-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <div id="splash-container">
+        <img id="splash-logo" src="logo-removebg-preview.png" alt="Logo">
+    </div>
+
     <a href="https://wa.me/525531877584" class="btn-whatsapp" target="_blank">
         <i class="bi bi-whatsapp"></i>
     </a>
 
-    <header class="main-header">
-        <div class="container text-center">
-            <img src="logo-removebg-preview.png" alt="Logo" class="header-logo">
-            <nav class="nav-container">
-                <a href="index.html" class="nav-link-custom">Inicio</a>
-                <a href="#" class="nav-link-custom">Servicios</a>
-                <a href="catalogo.html" class="nav-link-custom active">Catálogo</a>
-                <a href="index.html#contacto" class="nav-link-custom">Contacto</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="catalog-hero">
-            <div class="container">
-                <h1 class="stagger-item">Colección de Productos</h1>
-                <div class="gold-divider stagger-item"></div>
-                <p class="lead stagger-item text-white-50 mx-auto" style="max-width: 700px;">
-                    Calidad artesanal y tecnología de vanguardia para la identidad documental de su Notaría.
-                </p>
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="container text-center">
+                <img src="logo-removebg-preview.png" alt="Logo" style="height: 70px;">
+                <nav class="nav-container">
+                    <a href="index.html" class="nav-link-custom">Inicio</a>
+                    <a href="catalogo.html" class="nav-link-custom">Catálogo</a>
+                    <a href="https://wa.me/525531877584" class="nav-link-custom">Contacto</a>
+                </nav>
             </div>
-        </section>
+        </header>
 
-        <section class="py-5">
-            <div class="container px-4">
-                <div class="row g-4">
+        <main>
+            <section class="hero-section text-center">
+                <div class="container">
+                    <h1 class="hero-title mb-2 stagger-item">COMERCIALIZADORA GARCIA</h1>
+                    <h1 class="hero-title mb-4 stagger-item">Excelencia en <span style="color:var(--gold)">Calidad</span></h1>
                     
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="testimonio.png" alt="Testimonio"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Documentación</span>
-                                <h3 class="product-title">Hojas testimonio</h3>
-                                <p class="text-white-50 small product-description">Manejamos folios para Notarías del Estado de México y resto del país. Impresión en offset, serigrafía y tintas de seguridad.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Gramaje oficial</li>
-                                    <li><i class="bi bi-check2-circle"></i> Impresión de seguridad</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="Gemini_Generated_Image_9hu9t09hu9t09hu9 (1).png" alt="Protocolo"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Archivo</span>
-                                <h3 class="product-title">Protocolo Ordinario</h3>
-                                <p class="text-white-50 small product-description">Encuadernación de pasta dura con lomos reforzados y grabado profesional en pan de oro para apéndices.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Grabado en Foil</li>
-                                    <li><i class="bi bi-check2-circle"></i> Durabilidad secular</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="carpetas.png" alt="Carpetas"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Personalizado</span>
-                                <h3 class="product-title">Carpetas de Firma</h3>
-                                <p class="text-white-50 small product-description">Carpetas con hot stamping, grabado láser o serigrafía. Disponibles con argollas, broches o cierres.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Diseño único</li>
-                                    <li><i class="bi bi-check2-circle"></i> Acabado artesanal</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="tarjeta.png" alt="Tarjetas"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Corporativo</span>
-                                <h3 class="product-title">Tarjetas Personales</h3>
-                                <p class="text-white-50 small product-description">Impresión digital y serigrafía con acabados de lujo: laminado mate, brillante y soft touch.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Acabado Soft Touch</li>
-                                    <li><i class="bi bi-check2-circle"></i> Calidad premium</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="si.png" alt="Sobres"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Gestión</span>
-                                <h3 class="product-title">Sobres y Expedientes</h3>
-                                <p class="text-white-50 small product-description">Sobres para entrega de documentos e integración de expedientes en diversos papeles y modelos.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Impresión Offset</li>
-                                    <li><i class="bi bi-check2-circle"></i> Variedad de papeles</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="no.png" alt="Carátulas"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Acabado</span>
-                                <h3 class="product-title">Carátulas Testimonio</h3>
-                                <p class="text-white-50 small product-description">Impresión en cartulinas lisas o texturizadas  y acabados elegantes.</p>
-                                <ul class="product-list">
-                                    
-                                    <li><i class="bi bi-check2-circle"></i> Textura premium</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container"><img src="camisas.png" alt="Camisas"></div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Acabado</span>
-                                <h3 class="product-title">Camisas</h3>
-                                <p class="text-white-50 small product-description">Protección de documentos en papel bond y papel manila de alta calidad con impresión offset.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Papel Manila/Bond</li>
-                                    <li><i class="bi bi-check2-circle"></i> Personalizadas</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="product-card stagger-item">
-                            <div class="img-container">
-                                <img src="TPA.png" alt="Tarjetas TPA">
-                            </div>
-                            <div class="card-body-custom">
-                                <span class="badge-gold">Corporativo</span>
-                                <h3 class="product-title">Tarjetas TPA</h3>
-                                <p class="text-white-50 small product-description">Tarjetas de presentación con diseño especializado y optimizado para la identidad institucional TPA.</p>
-                                <ul class="product-list">
-                                    <li><i class="bi bi-check2-circle"></i> Diseño optimizado</li>
-                                    <li><i class="bi bi-check2-circle"></i> Impresión nítida</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <div class="text-center mt-5 pt-4 stagger-item">
-                    <a href="https://wa.me/525531877584" class="btn btn-danger rounded-pill px-5 py-3 fw-bold">COTIZAR PROYECTO</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 text-center text-lg-start footer-column">
-                    <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo mx-auto mx-lg-0">
-                    <p class="small opacity-50 mx-auto mx-lg-0" style="max-width: 300px;">
-                        Líderes en soluciones documentales para el sector notarial desde 1997. Calidad, confidencialidad y elegancia.
+                    <p class="fs-5 mb-5 stagger-item opacity-75 mx-auto" style="max-width: 700px;">
+                        27 años transformando la gestión documental de las notarías más importantes de México.
                     </p>
-                    <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
-                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <div class="stagger-item">
+                        <a href="https://wa.me/525531877584" class="btn btn-danger px-5 py-3 rounded-pill fw-bold">CONTACTAR AHORA</a>
                     </div>
                 </div>
-                
-                <div class="col-md-4 col-lg-2 text-center text-lg-start footer-column">
-                    <h5 class="footer-heading">Navegación</h5>
-                    <a href="index.html" class="footer-link">Inicio</a>
-                    <a href="#" class="footer-link">Servicios</a>
-                    <a href="catalogo.html" class="footer-link">Catálogo</a>
-                    <a href="index.html#contacto" class="footer-link">Contacto</a>
+            </section>
+
+            <section class="py-5">
+                <div class="container px-4">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-vector-pen"></i>
+                                <h3>Encuadernación</h3>
+                                <div class="definition">Preservación Física</div>
+                                <p class="text-muted small">Protocolos cosidos a mano con lomos reforzados y grabado en pan de oro.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-cloud-check"></i>
+                                <h3>Diseño</h3>
+                                <div class="definition">Inteligencia Documental</div>
+                                <p class="text-muted small">Conversión de archivos físicos a bases de datos inteligentes con tecnología OCR.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="service-card stagger-item">
+                                <i class="bi bi-layers"></i>
+                                <h3>Impresión</h3>
+                                <div class="definition">Soporte de Seguridad</div>
+                                <p class="text-muted small">Papel seguridad y opalina de 120g para testimonios y apéndices oficiales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-5 bg-black bg-opacity-25">
+                <div class="container px-4">
+                    <div class="row g-4 text-center">
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-shield-lock"></i>
+                                <h4>Seguridad Documental</h4>
+                                <p class="text-muted small">Garantizamos la máxima protección para sus documentos legales.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-diagram-3"></i>
+                                <h4>Orden y Eficiencia</h4>
+                                <p class="text-muted small">Papelería diseñada para optimizar los tiempos de gestión notarial.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="value-card stagger-item">
+                                <i class="bi bi-award"></i>
+                                <h4>Imagen Corporativa</h4>
+                                <p class="text-muted small">Elevamos el prestigio de su Notaría con acabados de alta gama.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4 text-center text-lg-start">
+                        <img src="logo-removebg-preview.png" alt="Logo" class="footer-logo mx-auto mx-lg-0">
+                        <p class="small opacity-50 mx-auto mx-lg-0" style="max-width: 300px;">
+                            Líderes en soluciones documentales para el sector notarial desde 1997.
+                        </p>
+                        <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-lg-2 text-center text-lg-start">
+                        <h5 class="footer-heading">Navegación</h5>
+                        <a href="index.html" class="footer-link">Inicio</a>
+                        <a href="catalogo.html" class="footer-link">Catálogo</a>
+                        <a href="https://wa.me/525531877584" class="footer-link">Contacto</a>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
+                        <h5 class="footer-heading">Servicios</h5>
+                        <a href="#" class="footer-link">Encuadernación Artesanal</a>
+                        <a href="#" class="footer-link">Digitalización OCR</a>
+                        <a href="#" class="footer-link">Impresión de Seguridad</a>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 text-center text-lg-start">
+                        <h5 class="footer-heading">Contacto</h5>
+                        <p class="footer-link mb-2">Antonio Solís 14, Col. Obrera, CDMX.</p>
+                        <p class="footer-link mb-2">55 3187 7584</p>
+                        <p class="footer-link">jraul_gar@hotmail.com</p>
+                    </div>
                 </div>
 
-                <div class="col-md-4 col-lg-3 text-center text-lg-start footer-column">
-                    <h5 class="footer-heading">Servicios</h5>
-                    <a href="#" class="footer-link">Encuadernación</a>
-                    <a href="#" class="footer-link">Digitalización OCR</a>
-                    <a href="#" class="footer-link">Impresión Seguridad</a>
-                </div>
-
-                <div class="col-md-4 col-lg-3 text-center text-lg-start footer-column">
-                    <h5 class="footer-heading">Contacto</h5>
-                    <p class="footer-link mb-1">Antonio Solís 14, Col. Obrera, CDMX.</p>
-                    <p class="footer-link mb-1">55 3187 7584</p>
-                    <p class="footer-link">jraul_gar@hotmail.com</p>
+                <div class="row copyright text-center">
+                    <div class="col-12">
+                        <p>© 2026 SOLUCIONES NOTARIALES. Todos los derechos reservados.</p>
+                    </div>
                 </div>
             </div>
-            <div class="text-center mt-5 pt-4 opacity-25 small">
-                <p>© 2026 SOLUCIONES NOTARIALES. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
         window.addEventListener('load', () => {
-            gsap.to(".stagger-item", {
-                opacity: 1,
-                y: 0,
-                stagger: 0.1,
-                duration: 0.8,
-                ease: "power2.out"
-            });
+            const tl = gsap.timeline();
+            tl.to("#splash-logo", { scale: 0.8, duration: 1.2, ease: "expo.inOut" })
+              .to("#splash-container", { y: "-100%", duration: 0.8, ease: "expo.inOut" })
+              .to(".stagger-item", { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 });
         });
     </script>
 </body>
